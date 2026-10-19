@@ -652,7 +652,7 @@ figcaption .d{display:none}
     if(e.isIntersecting){ v.dataset.vis='1'; if(!v.dataset.loaded){ if(!saveData){ var sp=portrait&&v.dataset.webmSp; addSrc(v,sp?v.dataset.webmSp:v.dataset.webm,sp?v.dataset.mp4Sp:v.dataset.mp4);} v.dataset.loaded='1'; } tryPlay(v);
       var n=0; (function retry(){ if(n++<6&&v.dataset.vis&&v.paused){ tryPlay(v); setTimeout(retry,1500);} })(); }
     else{ v.dataset.vis=''; if(v.dataset.loaded){ v.pause(); } }
-  })},{rootMargin:'100% 0px 100% 0px',threshold:0.01});
+  })},{rootMargin:'50% 0px 50% 0px',threshold:0.01});
   document.querySelectorAll('video.lazy').forEach(function(v){ if(portrait&&v.dataset.posterSp){v.poster=v.dataset.posterSp;} lio.observe(v)});
   // WeChat内蔵ブラウザ対策: JSBridge準備完了時と最初のタッチ/スクロール時に、画面内の動画を再生し直す
   function kick(){ if(!saveData){ if(hv.paused){tryPlay(hv);} document.querySelectorAll('video.lazy').forEach(function(v){ if(v.dataset.vis&&v.dataset.loaded&&v.paused){tryPlay(v);} }); } }
