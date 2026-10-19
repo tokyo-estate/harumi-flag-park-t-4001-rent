@@ -40,6 +40,17 @@ ul{list-style:none}
 @keyframes kb{from{transform:scale(1)}to{transform:scale(1.1)}}
 .hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.2) 60%,rgba(0,0,0,.9) 100%)}
 .hero .in{position:relative;z-index:2;width:100%;padding:0 22px calc(56px + env(safe-area-inset-bottom))}
+.hero .media{position:absolute;inset:0}
+/* 縦画面: 2棟が両方入る4:3の動画を全幅で出し、文字は下に */
+@media (max-aspect-ratio:1/1){
+  .hero{height:auto;min-height:0;display:block}
+  .hero .media{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:#000}
+  .hero::after{display:none}
+  .hero .in{padding:22px 22px calc(34px + env(safe-area-inset-bottom));background:#000}
+  .hero .no{font-size:clamp(64px,18vw,120px)}
+  .hero .media .ai{top:auto;bottom:8px;left:12px}
+  .hero .scroll{display:none}
+}
 .hero .en{font-size:11px;font-weight:500;letter-spacing:.36em;color:var(--gold2);text-transform:uppercase;text-shadow:0 1px 10px rgba(0,0,0,.6)}
 .hero .no{font-size:clamp(76px,22vw,180px);font-weight:200;line-height:.95;letter-spacing:-.01em;color:#fff;margin:6px 0 0;text-shadow:0 4px 40px rgba(0,0,0,.5)}
 .hero .no small{font-size:.22em;font-weight:300;letter-spacing:.2em;margin-left:10px;color:var(--gold2)}
@@ -250,8 +261,11 @@ figcaption .d{display:none}
 
 <!-- HERO -->
 <header class="hero">
+  <div class="media">
   <video id="heroVideo" muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" autoplay preload="auto" aria-hidden="true"></video>
-  <img class="poster" id="heroPoster" src="img/poster_sp.jpg" width="720" height="1280" alt="" aria-hidden="true">
+  <img class="poster" id="heroPoster" src="img/poster_sp.jpg" width="960" height="720" alt="" aria-hidden="true">
+  <p class="ai">※外観完成予想CGをもとにAIで生成した時間経過のイメージです</p>
+  </div>
   <div class="in">
     <p class="en">Harumi Flag — For Rent</p>
     <p class="no">4001<small>40F</small></p>
@@ -261,7 +275,6 @@ figcaption .d{display:none}
     </ul>
     <p class="p"><span>賃料</span><b>59万円</b><small>／月（共益費 3万円）</small></p>
   </div>
-  <p class="ai">※動画は実写をもとにAIで生成した時間経過のイメージです</p>
   <div class="scroll">SCROLL</div>
 </header>
 
@@ -276,6 +289,16 @@ figcaption .d{display:none}
     <li><div class="v">1<small>分</small></div><div class="k">BRT 徒歩</div></li>
   </ul>
 </div>
+
+<!-- TERRACE TIME-LAPSE（住戸の動画） -->
+<section class="movie">
+  <video class="lazy" muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="none" poster="img/poster_loop_terrace.jpg" data-webm="video/loop_terrace.webm" data-mp4="video/loop_terrace.mp4"></video>
+  <div class="cap">
+    <p class="no">4001 — Terrace Time-lapse</p>
+    <h2>40階のバルコニーで、<br>朝日から夜景まで</h2>
+    <p>4001号室のバルコニーからの眺め。<br>※実写をもとにAIで生成した時間経過のイメージです。</p>
+  </div>
+</section>
 
 <!-- 01 PLAN (3D) -->
 <section class="light plan-top">
@@ -578,7 +601,8 @@ figcaption .d{display:none}
 </section>
 
 <footer>
-  <p>※トップの動画と眺望の朝・昼・夕・夜の4点は、バルコニーの実写をもとにAIで生成したイメージです（実際の眺望・建物の見え方とは異なる場合があります）。</p>
+  <p>※トップの動画は、HARUMI FLAG SKY DUOの外観完成予想CGをもとにAIで生成した時間経過のイメージです（実際の建物・眺望とは異なります）。</p>
+  <p>※バルコニーのタイムラプス動画と眺望の朝・昼・夕・夜の4点は、バルコニーの実写をもとにAIで生成したイメージです（実際の眺望・建物の見え方とは異なる場合があります）。</p>
   <p>※その他の専有部・眺望・スカイラウンジからの眺望の写真と動画は、当住戸および共用部にて撮影したものです。</p>
   <p>※共用施設の写真・情報の出典：HARUMI FLAG 入居のしおり（PARK VILLAGE T棟）、はるみライフ＋（harumira.com）、HARUMI FLAG マンションポータル、HARUMI FLAG SKY DUO プレスリリース（2023年4月6日）。完成予想CG・販売資料のイラストを含みます。</p>
   <p>※掲載内容は2026年10月現在のものです。共用施設・サービスの内容は管理規約に従い、変更となる場合があります。</p>
