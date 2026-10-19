@@ -149,6 +149,11 @@ figcaption .t{color:#fff;font-weight:400}
 .movie .cap .no::before{content:"";width:34px;height:1px;background:var(--gold2);flex:0 0 auto}
 .movie .cap h2{font-size:clamp(20px,5vw,36px);font-weight:300;letter-spacing:.1em;color:#fff;line-height:1.45;margin-top:10px}
 .movie .cap p{font-size:13px;color:#d9d3c7;margin-top:8px;max-width:640px}
+/* 縦画面: 横長動画の全体が見えるよう横幅に合わせ、文字は動画の下に */
+@media (max-aspect-ratio:1/1){
+  .movie.wide video{height:auto;min-height:0;max-height:none;aspect-ratio:16/9}
+  .movie.wide .cap{position:static;padding:20px 22px 34px;background:#000}
+}
 .walk{background:#0b0a09}
 .walk video{height:100svh;max-height:none;display:block}
 .walk .walk-v{position:relative}
@@ -318,7 +323,6 @@ figcaption .d{display:none}
     <ul class="spec">
       <li>角住戸</li><li>3LDK</li><li>78.28㎡</li><li>バルコニー 36.98㎡</li><li>新築未入居</li>
     </ul>
-    <p class="note">※上の2本の動画は、完成予想CGをもとにAIで生成した<br>時間経過のイメージです。下の動画はお隣SUN T棟48階の<br>スカイラウンジ（PARK VILLAGEの方も利用可）。</p>
   </div>
 </header>
 
@@ -335,7 +339,7 @@ figcaption .d{display:none}
 </div>
 
 <!-- TERRACE TIME-LAPSE（住戸の動画） -->
-<section class="movie">
+<section class="movie wide">
   <video class="lazy" muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="none" poster="img/poster_loop_terrace.jpg" data-webm="video/loop_terrace.webm" data-mp4="video/loop_terrace.mp4"></video>
   <div class="cap">
     <p class="no">4001 — Terrace Time-lapse</p>
