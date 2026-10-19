@@ -72,7 +72,9 @@ ul{list-style:none}
   .hero .lbl .k{font-size:9.5px;letter-spacing:.24em;gap:10px}
   .hero .lbl .k::before{width:22px}
   .hero .lbl .t,.hero .lbl .d{display:none}
-  .hero .ai,.hero .scroll{display:none}
+  .hero .ai,.hero .media .scroll{display:none}
+  .hero .media2 .sc2{display:flex;right:14px;bottom:14px;font-size:9px}
+  .hero .media2 .sc2::after{height:36px}
   .hero .info{display:block;padding:20px 22px calc(28px + env(safe-area-inset-bottom))}
   .hero .info .spec{margin:0 0 16px}
   .hero .info .note{font-size:10.5px;color:#9b9488;margin-top:14px;line-height:1.7}
@@ -81,6 +83,7 @@ ul{list-style:none}
 .hero .ai{position:absolute;left:22px;top:calc(64px + env(safe-area-inset-top));z-index:3;font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.7);text-shadow:0 1px 6px rgba(0,0,0,.6)}
 .scroll{position:absolute;right:20px;bottom:calc(22px + env(safe-area-inset-bottom));z-index:3;font-size:10px;font-weight:500;letter-spacing:.3em;color:#fff;writing-mode:vertical-rl;display:flex;align-items:center;gap:10px}
 .scroll::after{content:"";width:1px;height:48px;background:#fff;animation:sc 1.8s ease-in-out infinite}
+.hero .sc2{display:none}
 @keyframes sc{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
 /* ---------- key numbers ---------- */
@@ -302,6 +305,7 @@ figcaption .d{display:none}
       <p class="t">48階のスカイラウンジで、朝日から夜景まで</p>
       <p class="d">お隣のタワーの都心側ラウンジも利用できます。※完成予想CGをもとにAIで生成した時間経過のイメージです。</p>
     </div>
+    <div class="scroll sc2">SCROLL</div>
   </div>
   <div class="info">
     <ul class="spec">
