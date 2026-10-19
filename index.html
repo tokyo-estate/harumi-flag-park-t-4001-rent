@@ -49,6 +49,7 @@ ul{list-style:none}
 .hero .p{color:#fff;font-size:13px;letter-spacing:.14em;white-space:nowrap;display:flex;align-items:baseline;gap:10px}
 .hero .p b{font-size:clamp(30px,8vw,54px);font-weight:700;color:var(--gold2);letter-spacing:.02em;line-height:1}
 .hero .p small{font-size:11px;color:#cfc9bd}
+.hero .ai{position:absolute;left:22px;top:calc(64px + env(safe-area-inset-top));z-index:3;font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.7);text-shadow:0 1px 6px rgba(0,0,0,.6)}
 .scroll{position:absolute;right:20px;bottom:calc(22px + env(safe-area-inset-bottom));z-index:3;font-size:10px;font-weight:500;letter-spacing:.3em;color:#fff;writing-mode:vertical-rl;display:flex;align-items:center;gap:10px}
 .scroll::after{content:"";width:1px;height:48px;background:#fff;animation:sc 1.8s ease-in-out infinite}
 @keyframes sc{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
@@ -260,6 +261,7 @@ figcaption .d{display:none}
     </ul>
     <p class="p"><span>賃料</span><b>59万円</b><small>／月（共益費 3万円）</small></p>
   </div>
+  <p class="ai">※動画は実写をもとにAIで生成した時間経過のイメージです</p>
   <div class="scroll">SCROLL</div>
 </header>
 
@@ -315,6 +317,13 @@ figcaption .d{display:none}
       <p class="lead">レインボーブリッジから都心のスカイライン、晴れた日には富士山まで。朝日から夕景まで、時間ごとに表情を変える眺望です。</p>
     </div>
     <div class="stack">
+      <div class="grid grid-d2 rv">
+        <figure class="zoom"><img class="ar-16-9" src="img/v10_ai_morning.jpg" width="1800" height="1004" loading="lazy" alt="朝のバルコニー"><figcaption><span class="t">朝</span><span class="d">　東京湾に昇る朝日</span></figcaption></figure>
+        <figure class="zoom"><img class="ar-16-9" src="img/v11_ai_noon.jpg" width="1800" height="1004" loading="lazy" alt="昼のバルコニー"><figcaption><span class="t">昼</span><span class="d">　青い海と都心のスカイライン</span></figcaption></figure>
+        <figure class="zoom"><img class="ar-16-9" src="img/v12_ai_sunset.jpg" width="1800" height="1004" loading="lazy" alt="夕方のバルコニー"><figcaption><span class="t">夕</span><span class="d">　空を染める夕焼け</span></figcaption></figure>
+        <figure class="zoom"><img class="ar-16-9" src="img/v13_ai_night.jpg" width="1800" height="1004" loading="lazy" alt="夜のバルコニー"><figcaption><span class="t">夜</span><span class="d">　レインボーブリッジと湾岸の夜景</span></figcaption></figure>
+      </div>
+      <p class="note dk" style="margin-top:-30px">※朝・昼・夕・夜の4点は、バルコニーの実写をもとにAIで生成した時間帯ごとのイメージです。実際の眺望・天候とは異なります。以下は実写です。</p>
       <figure class="full rv zoom"><img src="img/v04_sunset1.jpg" width="1800" height="1319" loading="lazy" alt="バルコニーからの夕景"><figcaption><span class="t">バルコニーからの夕景</span><span class="d">　東京湾越しに沈む夕陽</span></figcaption></figure>
       <div class="grid grid-d2 rv">
         <figure class="zoom"><img src="img/v07_fuji2.jpg" width="1800" height="1388" loading="lazy" alt="富士山と夕陽"><figcaption><span class="t">富士山と夕陽</span><span class="d">　都心のスカイライン越しに</span></figcaption></figure>
@@ -544,7 +553,8 @@ figcaption .d{display:none}
 </section>
 
 <footer>
-  <p>※専有部・眺望・スカイラウンジからの眺望の写真と動画は、当住戸および共用部にて撮影したものです。</p>
+  <p>※トップの動画と眺望の朝・昼・夕・夜の4点は、バルコニーの実写をもとにAIで生成したイメージです（実際の眺望・建物の見え方とは異なる場合があります）。</p>
+  <p>※その他の専有部・眺望・スカイラウンジからの眺望の写真と動画は、当住戸および共用部にて撮影したものです。</p>
   <p>※共用施設の写真・情報の出典：HARUMI FLAG 入居のしおり（PARK VILLAGE T棟）、はるみライフ＋（harumira.com）、HARUMI FLAG マンションポータル。完成予想CG・販売資料のイラストを含みます。</p>
   <p>※掲載内容は2026年10月現在のものです。共用施設・サービスの内容は管理規約に従い、変更となる場合があります。</p>
 </footer>
