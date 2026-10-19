@@ -119,6 +119,11 @@ figcaption .t{color:#fff;font-weight:400}
 .movie .cap .no::before{content:"";width:34px;height:1px;background:var(--gold2);flex:0 0 auto}
 .movie .cap h2{font-size:clamp(20px,5vw,36px);font-weight:300;letter-spacing:.1em;color:#fff;line-height:1.45;margin-top:10px}
 .movie .cap p{font-size:13px;color:#d9d3c7;margin-top:8px;max-width:640px}
+/* hero2: 縦画面は4:3の動画を全幅で出し、文字は動画の下に */
+@media (max-aspect-ratio:1/1){
+  .movie.hero2 video{height:auto;min-height:0;max-height:none;aspect-ratio:4/3}
+  .movie.hero2 .cap{position:static;padding:22px 22px 34px;background:#000}
+}
 .walk{background:#0b0a09}
 .walk video{height:100svh;max-height:none;display:block}
 .walk .walk-v{position:relative}
@@ -228,6 +233,7 @@ figcaption .d{display:none}
   .grid-d3{grid-template-columns:1fr 1fr 1fr}
   .offset>*:nth-child(2){margin-top:72px}
   .pc{display:inline}
+  br.sp{display:none}
   figcaption .d{display:inline}
   .hero .in{padding:0 64px 96px}
   .movie .cap{padding:160px 64px 60px}
@@ -277,6 +283,16 @@ figcaption .d{display:none}
   </div>
   <div class="scroll">SCROLL</div>
 </header>
+
+<!-- HERO 2（スカイラウンジ） -->
+<section class="movie hero2">
+  <video class="lazy" muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="none" poster="img/poster_hero2_pc.jpg" data-poster-sp="img/poster_hero2_sp.jpg" data-webm="video/hero2_pc.webm" data-mp4="video/hero2_pc.mp4" data-webm-sp="video/hero2_sp.webm" data-mp4-sp="video/hero2_sp.mp4"></video>
+  <div class="cap">
+    <p class="no">SUN T棟 48F — Sky Lounge Urban</p>
+    <h2>48階のスカイラウンジで、<br>朝日から夜景まで</h2>
+    <p>お隣のタワーの都心側ラウンジも利用できます。<br>※完成予想CGをもとにAIで生成した<br class="sp">時間経過のイメージです。</p>
+  </div>
+</section>
 
 <!-- KEY NUMBERS -->
 <div class="keys">
@@ -601,7 +617,7 @@ figcaption .d{display:none}
 </section>
 
 <footer>
-  <p>※トップの動画は、HARUMI FLAG SKY DUOの外観完成予想CGをもとにAIで生成した時間経過のイメージです（実際の建物・眺望とは異なります）。</p>
+  <p>※トップの2本の動画（SKY DUO外観・晴海フラッグ全景、SUN T棟48階 SKY LOUNGE URBAN）は、売主の完成予想CGをもとにAIで生成した時間経過のイメージです（実際の建物・眺望・内装とは異なります）。</p>
   <p>※バルコニーのタイムラプス動画と眺望の朝・昼・夕・夜の4点は、バルコニーの実写をもとにAIで生成したイメージです（実際の眺望・建物の見え方とは異なる場合があります）。</p>
   <p>※その他の専有部・眺望・スカイラウンジからの眺望の写真と動画は、当住戸および共用部にて撮影したものです。</p>
   <p>※共用施設の写真・情報の出典：HARUMI FLAG 入居のしおり（PARK VILLAGE T棟）、はるみライフ＋（harumira.com）、HARUMI FLAG マンションポータル、HARUMI FLAG SKY DUO プレスリリース（2023年4月6日）。完成予想CG・販売資料のイラストを含みます。</p>
@@ -633,11 +649,11 @@ figcaption .d{display:none}
   document.querySelectorAll('.rv,.zoom').forEach(function(el){io.observe(el)});
   // lazy videos: 1画面手前で読み込み、画面外では停止
   var lio=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;
-    if(e.isIntersecting){ v.dataset.vis='1'; if(!v.dataset.loaded){ if(!saveData){addSrc(v,v.dataset.webm,v.dataset.mp4);} v.dataset.loaded='1'; } tryPlay(v);
+    if(e.isIntersecting){ v.dataset.vis='1'; if(!v.dataset.loaded){ if(!saveData){ var sp=portrait&&v.dataset.webmSp; addSrc(v,sp?v.dataset.webmSp:v.dataset.webm,sp?v.dataset.mp4Sp:v.dataset.mp4);} v.dataset.loaded='1'; } tryPlay(v);
       var n=0; (function retry(){ if(n++<6&&v.dataset.vis&&v.paused){ tryPlay(v); setTimeout(retry,1500);} })(); }
     else{ v.dataset.vis=''; if(v.dataset.loaded){ v.pause(); } }
   })},{rootMargin:'100% 0px 100% 0px',threshold:0.01});
-  document.querySelectorAll('video.lazy').forEach(function(v){lio.observe(v)});
+  document.querySelectorAll('video.lazy').forEach(function(v){ if(portrait&&v.dataset.posterSp){v.poster=v.dataset.posterSp;} lio.observe(v)});
   // WeChat内蔵ブラウザ対策: JSBridge準備完了時と最初のタッチ/スクロール時に、画面内の動画を再生し直す
   function kick(){ if(!saveData){ if(hv.paused){tryPlay(hv);} document.querySelectorAll('video.lazy').forEach(function(v){ if(v.dataset.vis&&v.dataset.loaded&&v.paused){tryPlay(v);} }); } }
   if(window.WeixinJSBridge){kick();}else{document.addEventListener('WeixinJSBridgeReady',kick,false);}
