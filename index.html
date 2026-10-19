@@ -33,33 +33,51 @@ ul{list-style:none}
 .bar .price{font-size:13px;color:var(--gold2);letter-spacing:.06em;white-space:nowrap}
 .bar .price b{font-size:17px;font-weight:700}
 
-/* ---------- hero ---------- */
-.hero{position:relative;height:100svh;min-height:600px;overflow:hidden;display:flex;align-items:flex-end;background:#000}
+/* ---------- hero（hero1: SKY DUO外観＋全景 / hero2: SKY LOUNGE） ---------- */
+.hero{position:relative;background:#000}
+.hero .media,.hero .media2{position:relative;overflow:hidden;background:#000}
+.hero .media{height:100svh;min-height:600px}
+.hero .media2{aspect-ratio:16/9}
 .hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero .poster{animation:kb 30s ease-in-out infinite alternate;z-index:1}
 @keyframes kb{from{transform:scale(1)}to{transform:scale(1.1)}}
-.hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.2) 60%,rgba(0,0,0,.9) 100%)}
-.hero .in{position:relative;z-index:2;width:100%;padding:0 22px calc(56px + env(safe-area-inset-bottom))}
-.hero .media{position:absolute;inset:0}
-/* 縦画面: 2棟が両方入る4:3の動画を全幅で出し、文字は下に */
-@media (max-aspect-ratio:1/1){
-  .hero{height:auto;min-height:0;display:block}
-  .hero .media{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:#000}
-  .hero::after{display:none}
-  .hero .in{padding:22px 22px calc(34px + env(safe-area-inset-bottom));background:#000}
-  .hero .no{font-size:clamp(64px,18vw,120px)}
-  .hero .media .ai{top:auto;bottom:8px;left:12px}
-  .hero .scroll{display:none}
-}
+.hero .media::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.2) 60%,rgba(0,0,0,.9) 100%)}
+.hero .media2::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.75) 100%)}
+.hero .ov{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0 22px calc(56px + env(safe-area-inset-bottom))}
+.hero .lbl{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0 22px 40px}
+.hero .lbl .k{display:flex;align-items:center;gap:14px;font-size:11px;font-weight:500;letter-spacing:.34em;color:var(--gold2);text-transform:uppercase}
+.hero .lbl .k::before{content:"";width:34px;height:1px;background:var(--gold2);flex:0 0 auto}
+.hero .lbl .t{font-size:clamp(20px,3vw,34px);font-weight:300;letter-spacing:.1em;color:#fff;line-height:1.45;margin-top:10px}
+.hero .lbl .d{font-size:13px;color:#d9d3c7;margin-top:8px}
+.hero .info{display:none}
 .hero .en{font-size:11px;font-weight:500;letter-spacing:.36em;color:var(--gold2);text-transform:uppercase;text-shadow:0 1px 10px rgba(0,0,0,.6)}
 .hero .no{font-size:clamp(76px,22vw,180px);font-weight:200;line-height:.95;letter-spacing:-.01em;color:#fff;margin:6px 0 0;text-shadow:0 4px 40px rgba(0,0,0,.5)}
 .hero .no small{font-size:.22em;font-weight:300;letter-spacing:.2em;margin-left:10px;color:var(--gold2)}
-.hero h1{font-size:clamp(20px,5.4vw,30px);font-weight:400;letter-spacing:.14em;color:#fff;margin-top:10px}
+.hero h1{font-size:clamp(20px,5.4vw,30px);font-weight:400;letter-spacing:.14em;color:#fff;margin-top:10px;text-shadow:0 1px 12px rgba(0,0,0,.6)}
 .hero .spec{display:flex;flex-wrap:wrap;gap:6px 8px;margin:16px 0 18px;font-size:12px;letter-spacing:.12em;color:#fff}
 .hero .spec li{padding:5px 11px;border:1px solid rgba(255,255,255,.4);border-radius:999px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);background:rgba(0,0,0,.2)}
 .hero .p{color:#fff;font-size:13px;letter-spacing:.14em;white-space:nowrap;display:flex;align-items:baseline;gap:10px}
 .hero .p b{font-size:clamp(30px,8vw,54px);font-weight:700;color:var(--gold2);letter-spacing:.02em;line-height:1}
 .hero .p small{font-size:11px;color:#cfc9bd}
+/* 縦画面: 4:3の動画2本を隙間なく縦に並べ、タイトルはhero1の空に重ねる。特長・賃料は2本の下 */
+@media (max-aspect-ratio:1/1){
+  .hero .media,.hero .media2{height:auto;min-height:0;aspect-ratio:4/3}
+  .hero .media::after{background:linear-gradient(180deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,.15) 42%,rgba(0,0,0,0) 60%)}
+  .hero .ov{top:0;bottom:auto;padding:calc(18px + env(safe-area-inset-top)) 18px 0}
+  .hero .ov .spec,.hero .ov .p{display:none}
+  .hero .en{font-size:10px;letter-spacing:.3em}
+  .hero .no{font-size:clamp(46px,14vw,80px);margin-top:4px}
+  .hero h1{font-size:clamp(14px,4vw,20px);margin-top:4px;letter-spacing:.12em;line-height:1.5}
+  .hero .lbl{padding:0 16px 12px}
+  .hero .lbl .k{font-size:9.5px;letter-spacing:.24em;gap:10px}
+  .hero .lbl .k::before{width:22px}
+  .hero .lbl .t,.hero .lbl .d{display:none}
+  .hero .ai,.hero .scroll{display:none}
+  .hero .info{display:block;padding:20px 22px calc(28px + env(safe-area-inset-bottom))}
+  .hero .info .spec{margin:0 0 16px}
+  .hero .info .note{font-size:10.5px;color:#9b9488;margin-top:14px;line-height:1.7}
+  .bar:not(.solid){opacity:0}
+}
 .hero .ai{position:absolute;left:22px;top:calc(64px + env(safe-area-inset-top));z-index:3;font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.7);text-shadow:0 1px 6px rgba(0,0,0,.6)}
 .scroll{position:absolute;right:20px;bottom:calc(22px + env(safe-area-inset-bottom));z-index:3;font-size:10px;font-weight:500;letter-spacing:.3em;color:#fff;writing-mode:vertical-rl;display:flex;align-items:center;gap:10px}
 .scroll::after{content:"";width:1px;height:48px;background:#fff;animation:sc 1.8s ease-in-out infinite}
@@ -119,11 +137,6 @@ figcaption .t{color:#fff;font-weight:400}
 .movie .cap .no::before{content:"";width:34px;height:1px;background:var(--gold2);flex:0 0 auto}
 .movie .cap h2{font-size:clamp(20px,5vw,36px);font-weight:300;letter-spacing:.1em;color:#fff;line-height:1.45;margin-top:10px}
 .movie .cap p{font-size:13px;color:#d9d3c7;margin-top:8px;max-width:640px}
-/* hero2: 縦画面は4:3の動画を全幅で出し、文字は動画の下に */
-@media (max-aspect-ratio:1/1){
-  .movie.hero2 video{height:auto;min-height:0;max-height:none;aspect-ratio:4/3}
-  .movie.hero2 .cap{position:static;padding:22px 22px 34px;background:#000}
-}
 .walk{background:#0b0a09}
 .walk video{height:100svh;max-height:none;display:block}
 .walk .walk-v{position:relative}
@@ -265,34 +278,39 @@ figcaption .d{display:none}
   <div class="price"><span style="font-size:11px;margin-right:6px">賃料</span><b>59万円</b></div>
 </div>
 
-<!-- HERO -->
+<!-- HERO（hero1: SKY DUO外観＋晴海フラッグ全景 / hero2: SUN T棟48F SKY LOUNGE URBAN） -->
 <header class="hero">
   <div class="media">
-  <video id="heroVideo" muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" autoplay preload="auto" aria-hidden="true"></video>
-  <img class="poster" id="heroPoster" src="img/poster_sp.jpg" width="960" height="720" alt="" aria-hidden="true">
-  <p class="ai">※外観完成予想CGをもとにAIで生成した時間経過のイメージです</p>
+    <video id="heroVideo" muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" autoplay preload="auto" aria-hidden="true"></video>
+    <img class="poster" id="heroPoster" src="img/poster_sp.jpg" width="960" height="720" alt="" aria-hidden="true">
+    <p class="ai">※完成予想CGをもとにAIで生成した時間経過のイメージです</p>
+    <div class="ov">
+      <p class="en">Harumi Flag — For Rent</p>
+      <p class="no">4001<small>40F</small></p>
+      <h1>晴海フラッグ<br>PARK VILLAGE T棟</h1>
+      <ul class="spec">
+      <li>40階 角住戸</li><li>3LDK</li><li>専有 78.28㎡</li><li>バルコニー 36.98㎡</li><li>新築未入居</li>
+    </ul>
+    <p class="p"><span>賃料</span><b>59万円</b><small>／月（共益費 3万円）</small></p>
+    </div>
+    <div class="scroll">SCROLL</div>
   </div>
-  <div class="in">
-    <p class="en">Harumi Flag — For Rent</p>
-    <p class="no">4001<small>40F</small></p>
-    <h1>晴海フラッグ<br>PARK VILLAGE T棟</h1>
+  <div class="media2">
+    <video class="lazy" muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="none" poster="img/poster_hero2_pc.jpg" data-poster-sp="img/poster_hero2_sp.jpg" data-webm="video/hero2_pc.webm" data-mp4="video/hero2_pc.mp4" data-webm-sp="video/hero2_sp.webm" data-mp4-sp="video/hero2_sp.mp4"></video>
+    <div class="lbl">
+      <p class="k">SUN T棟 48F — Sky Lounge Urban</p>
+      <p class="t">48階のスカイラウンジで、朝日から夜景まで</p>
+      <p class="d">お隣のタワーの都心側ラウンジも利用できます。※完成予想CGをもとにAIで生成した時間経過のイメージです。</p>
+    </div>
+  </div>
+  <div class="info">
     <ul class="spec">
       <li>40階 角住戸</li><li>3LDK</li><li>専有 78.28㎡</li><li>バルコニー 36.98㎡</li><li>新築未入居</li>
     </ul>
     <p class="p"><span>賃料</span><b>59万円</b><small>／月（共益費 3万円）</small></p>
+    <p class="note">※上の2本の動画は、完成予想CGをもとにAIで生成した<br>時間経過のイメージです。下の動画はお隣SUN T棟48階の<br>スカイラウンジ（PARK VILLAGEの方も利用可）。</p>
   </div>
-  <div class="scroll">SCROLL</div>
 </header>
-
-<!-- HERO 2（スカイラウンジ） -->
-<section class="movie hero2">
-  <video class="lazy" muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="none" poster="img/poster_hero2_pc.jpg" data-poster-sp="img/poster_hero2_sp.jpg" data-webm="video/hero2_pc.webm" data-mp4="video/hero2_pc.mp4" data-webm-sp="video/hero2_sp.webm" data-mp4-sp="video/hero2_sp.mp4"></video>
-  <div class="cap">
-    <p class="no">SUN T棟 48F — Sky Lounge Urban</p>
-    <h2>48階のスカイラウンジで、<br>朝日から夜景まで</h2>
-    <p>お隣のタワーの都心側ラウンジも利用できます。<br>※完成予想CGをもとにAIで生成した<br class="sp">時間経過のイメージです。</p>
-  </div>
-</section>
 
 <!-- KEY NUMBERS -->
 <div class="keys">
