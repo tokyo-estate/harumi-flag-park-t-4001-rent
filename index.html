@@ -154,6 +154,17 @@ figcaption .t{color:#fff;font-weight:400}
   .movie.wide video{height:auto;min-height:0;max-height:none;aspect-ratio:16/9}
   .movie.wide .cap{position:static;padding:20px 22px 34px;background:#000}
 }
+/* 住戸の動画2本: 横幅いっぱいの16:9で隙間なく縦に並べ、文字は下 */
+.pair{padding:0;background:#000}
+.pair .pv{position:relative;overflow:hidden}
+.pair video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.pair .pv::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 65%,rgba(0,0,0,.6) 100%);pointer-events:none}
+.pair .k{position:absolute;left:16px;bottom:12px;z-index:2;display:flex;align-items:center;gap:10px;font-size:10px;font-weight:500;letter-spacing:.26em;color:var(--gold2);text-transform:uppercase}
+.pair .k::before{content:"";width:22px;height:1px;background:var(--gold2)}
+.pair .cap{padding:24px 22px 40px}
+.pair .cap h2{font-size:clamp(20px,5vw,34px);font-weight:300;letter-spacing:.1em;color:#fff;line-height:1.45}
+.pair .cap p{font-size:13px;color:#d9d3c7;margin-top:10px;line-height:1.8}
+@media (min-width:760px){.pair .k{left:48px;bottom:24px;font-size:11px}.pair .cap{max-width:1180px;margin:0 auto;padding:48px 48px 72px}}
 .walk{background:#0b0a09}
 .walk video{height:100svh;max-height:none;display:block}
 .walk .walk-v{position:relative}
@@ -338,13 +349,20 @@ figcaption .d{display:none}
   </ul>
 </div>
 
-<!-- TERRACE TIME-LAPSE（住戸の動画） -->
-<section class="movie wide">
-  <video class="lazy" muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="none" poster="img/poster_loop_terrace.jpg" data-webm="video/loop_terrace.webm" data-mp4="video/loop_terrace.mp4"></video>
+<!-- 住戸の動画: テラスのタイムラプス＋夜景（2本を隙間なく縦並び） -->
+<section class="pair">
+  <div class="pv">
+    <video class="lazy" muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="none" poster="img/poster_loop_terrace.jpg" data-webm="video/loop_terrace.webm" data-mp4="video/loop_terrace.mp4"></video>
+    <p class="k">4001 — Terrace Time-lapse</p>
+  </div>
+  <div class="pv">
+    <video class="lazy" muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="none" poster="img/poster_loop_night.jpg" data-webm="video/loop_night.webm" data-mp4="video/loop_night.mp4"></video>
+    <p class="k">40F — Night View</p>
+  </div>
   <div class="cap">
-    <p class="no">4001 — Terrace Time-lapse</p>
-    <h2>40階のバルコニーで、<br>朝日から夜景まで</h2>
-    <p>4001号室のバルコニーからの眺め。<br>※実写をもとにAIで生成した時間経過のイメージです。</p>
+    <h2>40階のバルコニーで、<br>朝日から湾岸の夜景まで</h2>
+    <p>4001号室のバルコニーからの眺め。<br>レインボーブリッジとお台場、<br>豊洲・勝どきのタワー群の灯り。</p>
+    <p class="note dk">※上の動画は実写をもとにAIで生成した時間経過のイメージです。下の動画は実写です。</p>
   </div>
 </section>
 
@@ -409,21 +427,11 @@ figcaption .d{display:none}
   </div>
 </section>
 
-<!-- 04 NIGHT -->
-<section class="movie short">
-  <video class="lazy" muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="none" poster="img/poster_loop_night.jpg" data-webm="video/loop_night.webm" data-mp4="video/loop_night.mp4"></video>
-  <div class="cap">
-    <p class="no">04 — Night View</p>
-    <h2>湾岸の夜景を、<br>バルコニーから</h2>
-    <p>レインボーブリッジとお台場、<br>豊洲・勝どきのタワー群の灯り。</p>
-  </div>
-</section>
-
 <!-- 05 LIVING -->
 <section class="light">
   <div class="wrap">
     <div class="head rv">
-      <p class="no">05 — Living Dining</p>
+      <p class="no">04 — Living Dining</p>
       <h2>二面の大開口が<br>景色を切り取るLD</h2>
       <p class="lead">リビングダイニング約12.5帖。<br>角住戸ならではのコーナーサッシから、<br>バルコニー越しに湾岸の眺望が広がります。</p>
     </div>
@@ -439,7 +447,7 @@ figcaption .d{display:none}
 <section class="light" style="padding-top:0">
   <div class="wrap">
     <div class="head rv">
-      <p class="no">06 — Kitchen &amp; Bedroom</p>
+      <p class="no">05 — Kitchen &amp; Bedroom</p>
       <h2>眺望を望むキッチンと、<br>3つの洋室</h2>
       <p class="lead">キッチン約4.2帖は、<br>LD越しに窓の外を望むレイアウト。<br>洋室は約6.5帖・5.2帖・5.0帖の3室です。</p>
     </div>
@@ -457,7 +465,7 @@ figcaption .d{display:none}
 <section>
   <div class="wrap">
     <div class="head rv">
-      <p class="no">07 — Sky Lounge 48F</p>
+      <p class="no">06 — Sky Lounge 48F</p>
       <h2>48階、東京湾を<br>見下ろすラウンジ</h2>
       <p class="lead">1階と48階を結ぶ直通エレベーターで、<br>最上部の共用フロアへ。バーとビリヤードの<br>SKY LOUNGE OCEAN、PARK VILLAGE<br>居住者専用のSUNNY LOUNGEとゲストルーム。</p>
     </div>
@@ -494,7 +502,7 @@ figcaption .d{display:none}
 <section style="padding-top:0">
   <div class="wrap">
     <div class="head rv">
-      <p class="no">08 — Party Room &amp; Kids</p>
+      <p class="no">07 — Party Room &amp; Kids</p>
       <h2>パーティールームと、<br>子どものための部屋</h2>
       <p class="lead">2階にはキッチン付きのPARTY ROOM SAFARIと、<br>キッズコーナーと鏡張りのアクティブコーナーが<br>一体になったPARENTS SALON。</p>
     </div>
@@ -513,7 +521,7 @@ figcaption .d{display:none}
 <section class="light">
   <div class="wrap">
     <div class="head rv">
-      <p class="no">09 — Park Village</p>
+      <p class="no">08 — Park Village</p>
       <h2>PARK VILLAGE居住者<br>だけの施設</h2>
       <p class="lead">F棟14階のSORA TERRACEとVIEW LOUNGE、<br>シアタールーム、ゲストルーム4室<br>（IYASHI・LEGACY・KONOKA・<br>T棟のNIJI／NAGOMI）は街区居住者専用。</p>
     </div>
@@ -533,7 +541,7 @@ figcaption .d{display:none}
 <section class="light paper2">
   <div class="wrap">
     <div class="head rv">
-      <p class="no">10 — Harumi Flag Town</p>
+      <p class="no">09 — Harumi Flag Town</p>
       <h2>街ぐるみで使える、<br>多彩な共用施設</h2>
       <p class="lead">SEA・SUN・PARKの各街区にある<br>「全体団地居住者」向けの施設は、<br>どの街区の住民でも利用できます。<br>カフェ、足湯、ライブラリー、シアターまで。</p>
     </div>
@@ -562,7 +570,7 @@ figcaption .d{display:none}
 <section>
   <div class="wrap">
     <div class="head rv">
-      <p class="no">11 — Structure</p>
+      <p class="no">10 — Structure</p>
       <h2>免震×制震の<br>ハイブリッド構造</h2>
       <p class="lead">建物の下の免震層（積層ゴム・免震ダンパー）が<br>地震の揺れを建物に伝えにくくし、<br>さらに間柱型の制震ダンパーが<br>地震エネルギーを吸収します。</p>
     </div>
@@ -587,7 +595,7 @@ figcaption .d{display:none}
 <section style="padding-top:0">
   <div class="wrap">
     <div class="head rv">
-      <p class="no">12 — Access</p>
+      <p class="no">11 — Access</p>
       <h2>東京BRTで、<br>新橋・虎ノ門へ直通</h2>
       <p class="lead">マンションから徒歩1分の東京BRT停留所から、<br>新橋・虎ノ門方面へ乗り換えなし。<br>都営大江戸線「勝どき」駅も徒歩圏です。</p>
     </div>
@@ -603,7 +611,7 @@ figcaption .d{display:none}
 <section class="light paper2" style="padding-top:0">
   <div class="wrap" style="padding-top:80px">
     <div class="head rv">
-      <p class="no">13 — Outline</p>
+      <p class="no">12 — Outline</p>
       <h2>募集条件・物件概要</h2>
     </div>
     <div class="grid grid-d2 rv" style="align-items:start">
