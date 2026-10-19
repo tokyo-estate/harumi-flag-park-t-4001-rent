@@ -75,9 +75,18 @@ ul{list-style:none}
   .hero .ai,.hero .media .scroll{display:none}
   .hero .media2 .sc2{display:flex;right:14px;bottom:14px;font-size:9px}
   .hero .media2 .sc2::after{height:36px}
-  .hero .info{display:block;padding:20px 22px calc(28px + env(safe-area-inset-bottom))}
-  .hero .info .spec{margin:0 0 16px}
-  .hero .info .note{font-size:10.5px;color:#9b9488;margin-top:14px;line-height:1.7}
+  /* 2本の動画の直下: 1画面に収まるよう小さめ・3行（物件名／特長／賃料） */
+  .hero .info{display:block;padding:12px 16px calc(24px + env(safe-area-inset-bottom))}
+  .hero .info .r1{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+  .hero .info .t2{display:flex;align-items:baseline;gap:6px;color:#fff;white-space:nowrap}
+  .hero .info .t2 b{font-size:clamp(24px,7vw,30px);font-weight:200;line-height:1;letter-spacing:.02em}
+  .hero .info .t2 small{font-size:10px;letter-spacing:.16em;color:var(--gold2)}
+  .hero .info .p{font-size:11px;gap:6px;letter-spacing:.06em}
+  .hero .info .p b{font-size:clamp(22px,6.6vw,28px)}
+  .hero .info .p small{font-size:clamp(9px,2.6vw,11px)}
+  .hero .info .spec{flex-wrap:nowrap;gap:5px;margin:10px 0 0;font-size:clamp(9.5px,2.75vw,11.5px);letter-spacing:.04em}
+  .hero .info .spec li{padding:3px 8px;white-space:nowrap}
+  .hero .info .note{font-size:10px;color:#9b9488;margin-top:14px;line-height:1.7}
   .bar:not(.solid){opacity:0}
 }
 .hero .ai{position:absolute;left:22px;top:calc(64px + env(safe-area-inset-top));z-index:3;font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.7);text-shadow:0 1px 6px rgba(0,0,0,.6)}
@@ -306,10 +315,10 @@ figcaption .d{display:none}
     <div class="scroll sc2">SCROLL</div>
   </div>
   <div class="info">
+    <div class="r1"><p class="t2"><b>4001</b><small>40F</small></p><p class="p"><span>賃料</span><b>59万円</b><small>／月（共益費 3万円）</small></p></div>
     <ul class="spec">
-      <li>40階 角住戸</li><li>3LDK</li><li>専有 78.28㎡</li><li>バルコニー 36.98㎡</li><li>新築未入居</li>
+      <li>角住戸</li><li>3LDK</li><li>78.28㎡</li><li>バルコニー 36.98㎡</li><li>新築未入居</li>
     </ul>
-    <p class="p"><span>賃料</span><b>59万円</b><small>／月（共益費 3万円）</small></p>
     <p class="note">※上の2本の動画は、完成予想CGをもとにAIで生成した<br>時間経過のイメージです。下の動画はお隣SUN T棟48階の<br>スカイラウンジ（PARK VILLAGEの方も利用可）。</p>
   </div>
 </header>
